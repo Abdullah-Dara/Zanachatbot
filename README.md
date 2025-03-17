@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Zana Chatbot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Zana** is an intelligent chatbot designed to provide detailed information about cultural heritage (CH) artifacts in the Kurdistan region of Iraq. It uses advanced language models, prompt engineering, and automatic language detection/translation to offer domain-specific responses in the user's language.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Domain-Specific Responses:**  
+  Answers only questions about tangible and intangible CH artifacts in Kurdistan.
+- **Modern User Interface:**  
+  Built with React for a responsive and engaging chat experience.
+- **Robust Backend:**  
+  Powered by a Flask server that connects to an Ollama-hosted `llama3.2:3B` model.
 
-### `yarn start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before running the project, ensure you have the following installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Git** – [Download Git](https://git-scm.com/downloads)
+- **Node.js and npm** (or [Yarn](https://yarnpkg.com/)) – [Download Node.js](https://nodejs.org/en/download/)
+- **Anaconda/Miniconda** – [Download Anaconda](https://www.anaconda.com/products/distribution)
+- **Python 3.8+**
+- **Ollama** – [Download Ollama](https://ollama.com/) (Ensure Ollama is installed and running)
+- **Llama Model `llama3.2:3B`** – Download and configure this model in Ollama following its documentation.
 
-### `yarn test`
+1. Setting Up the Python Backend
+a. Create and Activate the Conda Environment
+Open Anaconda Prompt and run:
+conda create -n ollama-chatbot python=3.8
+conda activate ollama-chatbot
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+b. Install Python Dependencies
+Within the activated environment, install the required packages:
+pip install flask requests deep-translator langid
 
-### `yarn build`
+c. Configure Ollama and Llama Model
+Ensure Ollama is installed and running.
+Download and configure the llama3.2:3B model in Ollama according to its documentation.
+Verify that the model is accessible at <http://localhost:11434/api/chat>.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+d. Run the Backend Server (this might not work so run it from the command prompt)
+Use the provided batch file to launch the server. In the backend folder, double-click start_chatbot.bat or run it from the command prompt. This file will activate the conda environment and start the Flask server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Setting Up the React Frontend
+Navigate to the frontend folder, then install dependencies:
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After installing, start the development server:
+npm start
 
-### `yarn eject`
+3. Running the Chatbot
+Start the Backend:
+Run the batch file (start_chatbot.bat) to activate the Anaconda environment and start the Flask server on port 5000.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Start the Frontend:
+In the frontend folder, run npm start (or yarn start) to launch the React interface.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Interact with Zana:
+Ask questions about tangible and intangible CH artifacts in Kurdistan. The chatbot will automatically detect the input language, translate if necessary, and respond accordingly.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Troubleshooting
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Translation Issues:
+Ensure your internet connection is active, as translation relies on external APIs.
 
-## Learn More
+Ollama Model:
+Verify that Ollama is running and the llama3.2:3B model is configured correctly.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Environment Issues:
+Always activate the correct conda environment (ollama-chatbot) before running the backend.
